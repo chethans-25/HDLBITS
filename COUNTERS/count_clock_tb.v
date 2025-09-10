@@ -1,3 +1,5 @@
+//This is a simple testbench to verify the working of  digital clock (count_clock.v )
+
 module count_clock_tb ();
   reg clk;
   reg reset;

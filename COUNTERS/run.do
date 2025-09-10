@@ -1,3 +1,5 @@
+#Need to run these code in Questa terminal to run count_clock and count_clock_tb
+
 if {![file exists work]} {
     vlib work
 }
