@@ -15,25 +15,25 @@ module top_module(
     case (state)
       A:
       begin
-        next_state <= in[3]? B: A;
-        done <= 1'b0;
+        next_state = in[3]? B: A;
+        done = 1'b0;
       end 
       B:
       begin
-        next_state <= C;
-        done <= 1'b0;
+        next_state = C;
+        done = 1'b0;
       end 
       C:
       begin
-        next_state <= D;
-        done <= 1'b0;
+        next_state = D;
+        done = 1'b0;
       end 
       D:
       begin
-        next_state <= in[3]? B: A;
-        done <= 1'b1;
+        next_state = in[3]? B: A;
+        done = 1'b1;
       end 
-      default: next_state <= state;
+      default: next_state = state;
     endcase
   end
 
