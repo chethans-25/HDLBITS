@@ -8,7 +8,7 @@ module top_module(
 
   parameter A = 0, B = 1, C = 2, D = 3;
   reg [1:0] state, next_state;
-  reg [23:0] out;
+  // reg [23:0] out_bytes;
   
 
 
@@ -19,44 +19,58 @@ module top_module(
     case (state)
       A:
       begin
-        next_state = in[3]? B: A;
-        done = 1'b0;
-        out[23:16]= in;
+        // next_state = in[3]? B: A;
+        // done = 1'b0;
+        // out_bytes[23:16]= in;
 
-        if (in[3])
+        if (in[3]==1)
         begin
           next_state = B;
           done = 1'b0;
-          out[23:16]= in;
+          out_bytes[23:16]= in;
         end
         else
         begin
           next_state = A;
           done = 1'b0;
-          out[23:16]= 8'h00;
+          // out_bytes[23:16]= 8'h00;
         end
       end 
       B:
       begin
         next_state = C;
         done = 1'b0;
-        out[15:8]= in;
-      end 
+        out_bytes[15:8]= in;
+      end
       C:
       begin
         next_state = D;
         done = 1'b0;
-        out[7:0]= in;
+        out_bytes[7:0]= in;
       end 
       D:
       begin
-        out_bytes = out;
-        done = 1'b1;
-        next_state = in[3]? B: A;
+        if (in[3])
+        begin
+          next_state = B;
+          done = 1'b0;
+          out_bytes[23:16]= in;
+        end
+        else
+        begin
+          next_state = A;
+          done = 1'b0;
+          // out_bytes[23:16]= 8'h00;
+        end
+
+
+        // out_bytes = out_bytes;
+        // done = 1'b1;
+        // next_state = in[3]? B: A;
 
         // if (in[3]) 
         // begin
-        //   out[23:16]= in;
+        //   out_bytes[23:16]= in;
         //   next_state = B;
         // end
         // else
