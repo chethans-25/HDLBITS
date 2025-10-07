@@ -1,1 +1,48 @@
 
+[  ] Microsoft Loop component
+Simplify taking Notes during a meeting with Microsoft loop component. 
+Go to notes section. Add agenda, meeting notes, follow up tasks.
+Tasks can be assigned to individuals, which will link to the planner/to-do.
+
+[  ] Scheduling Assistant
+
+[  ] Planner
+My day
+Tasks that are due today 
+Tasks that are manually added to accomplish today.
+My tasks
+Assigned, created tasks, flagged emails
+My plans
+Aggregate of individual plans, including Microsoft plans
+Add new plan
+Can create project management plan
+
+
+
+[  ] Message delivery option
+Urgent,  Important, normal 
+
+
+[  ] Code block 
+Allows us to provide code snippets in a block, along with syntax highlighted for listed programing languages.
+More readable during code Analysis
+
+[  ] Text format features
+Bold, italic, underline are common, which we use with shortcuts.
+But what's additional is this table.
+
+
+
+[  ] DND priority access
+You are presenting your screen over a call with your colleague. By default, your status will be set to DND. You wont receive any notification. What if someone important , your lead or manager wants to send you a message which is very important.
+
+
+[  ] Meeting drag and drop
+[  ] Repeat meeting
+[  ] Stickers
+
+[  ] Speaker Coach
+I am giving a presentation in front of you, is there a way to know whether I spoke well? Yes it is. Speaker coach analyses your speech and tell you how you spoke in a meeting. It tells what mistakes you did and suggests improvements.
+
+[  ] Presence: notification
+
