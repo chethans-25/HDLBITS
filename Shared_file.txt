@@ -247,4 +247,19 @@ Use of event Trigger and wait
 
 
 Fork join
+Fork join_any
+Fork join_none
+
+
+Mailbox and Semaphore need constructors
+
+Common Mailbox usage
+Method 1
+gen.mbx = mbx;
+drv.mbx = mbx;
+
+Method 2
+Use
+this. mbx = mbx;
+in standard constructor
 
