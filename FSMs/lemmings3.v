@@ -11,46 +11,56 @@ module top_module(
   output digging ); 
 
   
-  parameter LEFT = 0, RIGHT = 1, FALL = 2, DIGGING = 3;
-  reg [1:0]state, next_state;
-  reg prev; // to store previous walking state
+  parameter LEFT = 0, RIGHT = 1, FALL_L = 2, FALL_R = 3, DIG_L = 4, DIG_R = 5;
+  reg [2:0]state, next_state;
     
   always @(*)
   begin
     case(state)
       LEFT:
       begin
-        prev<=1'b0;
-        next_state <= (~ground)?FALL: dig? DIGGING: bump_left ? RIGHT : LEFT ;
+        next_state = (~ground)?FALL_L: dig? DIG_L: bump_left ? RIGHT : LEFT ;
       end
           
       RIGHT:
       begin
-        prev <= 1'b1;
-        next_state <= (~ground)?FALL: dig? DIGGING: bump_right? LEFT  : RIGHT;
+        next_state = (~ground)?FALL_R: dig? DIG_R: bump_right? LEFT  : RIGHT;
       end
       
-      FALL:
+      FALL_L:
       begin
-        next_state <= (ground & prev)?RIGHT:(ground & ~prev)? LEFT:FALL;
+        next_state = ground ? LEFT : FALL_L;
       end
 
-      DIGGING:
+      FALL_R:
       begin
-        next_state <= ~ground ? FALL : state;
+        next_state = ground ? RIGHT : FALL_R;
+      end
+
+      DIG_L:
+      begin
+        next_state = ~ground ? FALL_L : DIG_L;
+      end
+
+      DIG_R:
+      begin
+        next_state = ~ground ? FALL_R : DIG_R;
       end
     endcase
   end
     
   always @(posedge clk or posedge areset)
   begin
-    state = areset ? LEFT : next_state;
+    if (areset)
+      state <= LEFT;
+    else
+      state <= next_state;
   end
 
-  assign walk_left = (state == LEFT) && ~digging;
-  assign walk_right = (state == RIGHT) && ~digging;
-  assign aaah = (state == FALL);
-  assign digging = (state == DIGGING);
+  assign walk_left = (state == LEFT);
+  assign walk_right = (state == RIGHT);
+  assign aaah = (state == FALL_L || state == FALL_R);
+  assign digging = (state == DIG_L || state == DIG_R);
 
 
 endmodule
